@@ -11,6 +11,10 @@ export const router = new VueRouter({
     mode: 'history',
     routes : [
         {
+            path :'/',
+            redirect:'/news'
+        },
+        {
             //path : url 주소
             // component : url 주소로 갔을 때 표시될 컴포넌트
             path :'/news',
