@@ -14,6 +14,7 @@ export const router = new VueRouter({
     routes : [
         {
             path :'/',
+            //바로 호출할 페이지 링크 연결 = redirect
             redirect:'/news'
         },
         {
