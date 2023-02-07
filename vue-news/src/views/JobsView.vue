@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { fetchNewsList } from '../api/index.js';
 export default {
 
 }
