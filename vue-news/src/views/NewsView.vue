@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { fetchNewsList } from '../api/index.js';
+
 export default {
     data(){
         return {
@@ -13,9 +13,11 @@ export default {
         }
     },
     created(){
-        fetchNewsList()
-            .then(response => this.users = response.data )
-            .catch((error)=>console.log(error));
+        // fetchNewsList()
+        //     .then(response => this.users = response.data )
+        //     .catch((error)=>console.log(error));
+        this.$store.dispatch('FETCH_NEWS');
+
     }
 } 
 </script>

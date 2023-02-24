@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { fetchJobList } from '../api/index.js';
+import { fetchJobList } from '@/api/index.js';
 
 export default {
     data(){
