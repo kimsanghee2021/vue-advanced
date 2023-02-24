@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콜백함수</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+    <div>jquery ajax</div>
+    <script>
+        function callAjax(){
+            return new Promise(function(resolve, reject){
+                $.ajax({
+                    url : 'https://api.hnpwa.com/v0/news/1.json',
+                    success:function(data){
+                        resolve(data);
+                    }
+                });
+            });
+        }
+        function fetchData(){
+            var result = [];
+            callAjax()
+            .then(function(data){
+                //console.log('데이터 호출 결과', data);
+                result = data;
+                //console.log('함수결과',result);
+            });
+            // $.ajax({
+            //     url : 'https://api.hnpwa.com/v0/news/1.json',
+
+            //     success : function(data){
+            //         console.log('데이터 호출 결과', data);
+            //         result = data;
+            //         //아작스 안에서 선언시 데이터 호출 후 불러옴 배열 안에 값이 담겨 들어옴 
+            //         console.log('함수 결과',result)
+            //     }
+            // });
+
+            //빈 배열값이 넘어옴 그리고 첫번째로 호출됨 
+            //console.log('함수 결과',result)
+        }
+
+        fetchData();
+
+        function getData(callback){
+            return new Promise(function(resolve, reject){
+                $.ajax({
+                    url : 'https://api.hnpwa.com/v0/jobs/1.json',function(responce){
+                        resolve(responce);
+                        console.log(responce);
+                    }
+                });
+            });
+        };
+    </script>
+</body>
+</html>
