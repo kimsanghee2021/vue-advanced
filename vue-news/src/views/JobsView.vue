@@ -1,27 +1,40 @@
 <template>
     <div>
-        <div v-for="work in works" v-bind:key="work.title">{{ work.title }}</div>
+        <p v-for="work in fetchedJobs" v-bind:key="work.title">
+            <a :href="work.url">{{ work.title }}</a>
+            <small>{{ work.time_ago }} by {{ work.domain }}</small>
+        </p>
+        
     </div>
 </template>
 
 <script>
-import { fetchJobList } from '@/api/index.js';
-
+import { mapGetters } from 'vuex';
 export default {
-    data(){
-        return{
-            works : []
-        }
+    computed:{
+        ...mapGetters(['fetchedJobs'])
+        /* 
+            store에서 데이터를 가져올 수 있는 방법
+            #3
+            ...mapGetters({fetchedAsk : 'fetchedAsk' })
+
+            #2
+            ...mapState(){
+                fetchedAsk : state => state.ask
+            }
+        
+            #1
+            ask(){
+                return this.$store.state.ask;
+            }
+        */
     },
     created(){
-        fetchJobList()
-        .then(response => this.works = response.data)
-        .catch(error=>{console.log(error)});
-
+        this.$store.dispatch('FETCH_JOBS')
     }
 }
 </script>
 
 <style>
 
-</style>
+</style> 
