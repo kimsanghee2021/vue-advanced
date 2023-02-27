@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import vuex from 'vuex';
-import mutations  from './mutations';
-import actions  from './actions';
+import state from './states.js';
+import mutations  from './mutations.js';
+import actions  from './actions.js';
+import getters from './getters.js';
 Vue.use(vuex);
 
 
@@ -15,19 +17,8 @@ actions : backend api 에서 호출 하는 곳
 
 */
 export const store =  new vuex.Store({
-    state:{ //공통으로 사용할 변수 모음
-        news:[],
-        ask:[],
-        job:[]
-    },
+    state,
+    getters,
     mutations,
-    getters :{
-        fetchedJobs(state){
-            return state.job;
-        },
-        fetchedNews(state){
-            return state.news;
-        }
-    },
     actions,
 });
