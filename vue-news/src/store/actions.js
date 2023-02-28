@@ -1,4 +1,4 @@
-import { fetchNewsList, fetchAskList, fetchJobList, fetchUserInfo } from '@/api/index.js';
+import { fetchNewsList, fetchAskList, fetchJobList, fetchUser, fetchItem } from '@/api/index.js';
 
 export default{//비동기 실행 
     FETCH_NEWS({commit}){
@@ -23,10 +23,17 @@ export default{//비동기 실행
         .catch(error=>{console.log(error)});
     },
     FETCH_USER({commit},name){
-        fetchUserInfo(name)
-        .then(({data})=>{
-            commit('SET_USER',data)
+        fetchUser(name)
+        .then((res)=>{
+            commit('SET_USER',res.data)
         })
         .catch(error=>{console.log(error)});
+    },
+    FETCH_ITEM({commit},payload){
+        fetchItem(payload)
+        .then(({data})=>{
+            commit('SET_ITEM',data)
+        })
+        .catch(error=>{console.log(error)})
     }
 }

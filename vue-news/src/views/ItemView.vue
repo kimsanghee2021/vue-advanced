@@ -1,13 +1,23 @@
 <template>
 
 <div>
-
+    <p>{{ fetchItem.title }}</p>
 </div>   
 </template>
 
 <script>
-export default {
 
+export default {
+    computed:{
+        fetchItem(){
+            return this.$store.state.item;
+        }
+    },
+    created(){
+        const itemId = this.$route.params.id;
+        console.log(itemId)
+        this.$store.dispatch('FETCH_ITEM', itemId);
+    }
 }
 </script>
 
