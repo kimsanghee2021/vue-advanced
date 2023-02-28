@@ -4,5 +4,8 @@ export default{
     },
     fetchedNews(state){
         return state.news;
+    },
+    fetchedUser(state){
+        return state.user;
     }
 }

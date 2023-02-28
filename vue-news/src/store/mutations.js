@@ -7,5 +7,8 @@ export default{//동기 실행, state 변경
     },
     SET_JOB(state, data){
         state.job = data;
+    },
+    SET_USER(state,data){
+         state.user = data;
     }
 }
